@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +12,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const header = (
+    <header>
+      <div className="text-center bg-slate-400 p-8 my-6 rounded-md">
+        <Link href="/"> <h1 className="text-3xl text-black font-bold mt-4">Tech-Whys</h1></Link>
+        <p className="text-slate-800">🤟 With Rohit 💻</p>
+      </div>
+    </header>
+  );
+
+  const footer = (
+    <footer>
+      <div className="border-t border-slate-400 mt-12 py-6 text-center text-slate-400">
+        <h3 >© Developed by Rohit Kumar</h3>
+      </div>
+    </footer>
+  );
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+      <div className="mx-auto  max-w-2xl px-6 ">
+        {header}
+        {children}
+        {footer}
+      </div>
+      </body>
     </html>
   );
 }
